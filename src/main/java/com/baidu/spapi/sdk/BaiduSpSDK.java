@@ -11,7 +11,7 @@ import java.util.Map;
 public class BaiduSpSDK extends BaiduSpAPI {
 
     @Override
-    public oauth$jscode2sessionkey_response oauth$jscode2sessionkey(String Content_Type, oauth$jscode2sessionkey_body body) throws Error {
+    public oauth$jscode2sessionkey_response oauth$jscode2sessionkey( oauth$jscode2sessionkey_body body) throws Error {
         final JsonObject result;
         try {
             Map<String, String> map = MAP.object2map(body);

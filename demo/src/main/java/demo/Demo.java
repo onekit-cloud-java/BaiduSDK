@@ -1,7 +1,6 @@
 package demo;
 
 import com.baidu.openapi.BaiduOpenAPI;
-import com.baidu.openapi.sdk.BaiduOpenSDK;
 import com.baidu.spapi.BaiduSpAPI;
 import com.baidu.spapi.sdk.BaiduSpSDK;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +24,6 @@ public class Demo {
         body.setClient_id(BaiduAccount.appkey);
         body.setCode(code);
         body.setSk(BaiduAccount.secret);
-        return new BaiduSpSDK().oauth$jscode2sessionkey(null, body);
+        return new BaiduSpSDK().oauth$jscode2sessionkey( body);
     }
 }
