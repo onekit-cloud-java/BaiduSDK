@@ -27,3 +27,6 @@ hs_err_pid*
 .idea/jarRepositories.xml
 .idea/encodings.xml
 .idea/compiler.xml
+target/
+demo/target/
+
