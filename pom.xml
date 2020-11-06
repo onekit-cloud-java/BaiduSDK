@@ -6,7 +6,7 @@
 
     <groupId>cn.onekit.x2x.cloud</groupId>
     <artifactId>baidu-sdk</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <name>BaiduSDK</name>
     <url>https://github.com/onekit-cloud-java/baidusdk</url>
     <description>baidu cloud sdk</description>
