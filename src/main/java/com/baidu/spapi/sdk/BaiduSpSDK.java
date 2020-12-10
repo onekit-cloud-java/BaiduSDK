@@ -2,28 +2,34 @@ package com.baidu.spapi.sdk;
 
 import cn.onekit.thekit.AJAX;
 import cn.onekit.thekit.JSON;
-import cn.onekit.thekit.MAP;
 import com.baidu.spapi.BaiduSpAPI;
+import com.baidu.spapi.entity.oauth_jscode2sessionkey_body;
+import com.baidu.spapi.entity.oauth_jscode2sessionkey_response;
 import com.google.gson.JsonObject;
 
-import java.util.Map;
 
 public class BaiduSpSDK extends BaiduSpAPI {
 
-    @Override
-    public oauth$jscode2sessionkey_response oauth$jscode2sessionkey( oauth$jscode2sessionkey_body body) throws Error {
+    private final String host;
+
+    public BaiduSpSDK(String host) {
+        this.host=host;
+    }
+
+    public oauth_jscode2sessionkey_response oauth_jscode2sessionkey(oauth_jscode2sessionkey_body body) throws Error {
         final JsonObject result;
         try {
-            Map<String, String> map = MAP.object2map(body);
-            String response = AJAX.request("https://spapi.baidu.com/oauth/jscode2sessionkey", "post", map);
-            result = (JsonObject) JSON.parse(response);
+            String url = String.format("%s/oauth/jscode2sessionkey",host);
+            JsonObject post_body = (JsonObject) JSON.object2json(body);
+
+            result = (JsonObject) JSON.parse(AJAX.request(url, "post", post_body.toString()));
+
         } catch (Exception e) {
-            Error error = new Error();
-            throw error;
+            throw new Error();
         }
         if (result.has("error")) {
             throw JSON.json2object(result, Error.class);
         }
-        return JSON.json2object(result, oauth$jscode2sessionkey_response.class);
+        return JSON.json2object(result, oauth_jscode2sessionkey_response.class);
     }
 }
